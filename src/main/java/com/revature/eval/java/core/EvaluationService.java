@@ -277,7 +277,7 @@ public class EvaluationService {
 	 */
 	public String reverse(String string) {
 		String result = "";
-		for(int i = string.length() - 1; i >= 0; i++) {
+		for(int i = string.length() - 1; i >= 0; i--) {
 			result += string.charAt(i);
 		}
 		// TODO Write an implementation for this method declaration
@@ -292,8 +292,13 @@ public class EvaluationService {
 	 * long name like Portable Network Graphics to its acronym (PNG).
 	 */
 	public String acronym(String phrase) {
+		String[] words = phrase.split(" ");
+		String result = "";
+		for(String word : words) {
+			result += word.charAt(0);
+		}
 		// TODO Write an implementation for this method declaration
-		return null;
+		return result;
 	}
 
 	/**
