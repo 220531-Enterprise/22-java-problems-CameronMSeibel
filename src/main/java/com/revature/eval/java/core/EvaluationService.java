@@ -3,6 +3,7 @@ package com.revature.eval.java.core;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -221,8 +222,29 @@ public class EvaluationService {
 	 * and there is no resulting remainder.
 	 */
 	public int getGreatestCommonDivisor(int first, int second) {
+		if(first < 10 || second < 10) {
+			return -1;
+		}
+		ArrayList<Integer> firstDivisors = new ArrayList<Integer>();
+		ArrayList<Integer> secondDivisors = new ArrayList<Integer>();
+		for(int i = 1; i <= first; i++) {
+			if(first % i == 0) {
+				firstDivisors.add(i);
+			}
+		}
+		for(int i = 1; i <= second; i++) {
+			if(second % i == 0) {
+				secondDivisors.add(i);
+			}
+		}
+		int gcd = 1;
+		for(int divisor : firstDivisors) {
+			if(secondDivisors.contains(divisor)) {
+				gcd = divisor;
+			}
+		}
 		// TODO Write an implementation for this method declaration
-		return 0;
+		return gcd;
 	}
 
 	/**
