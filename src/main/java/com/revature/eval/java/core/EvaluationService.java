@@ -19,10 +19,15 @@ public class EvaluationService {
 	 * and return it. For conversion and rounding use Math.round().
 	 */
 	static class SpeedConverter {
+		
+		final static double KM_PER_MILE = 1.60934;
 
 		public static long toMilesPerHour(double kilometersPerHour) {
+			if(kilometersPerHour < 0) {
+				return -1;
+			}
 			// TODO Write an implementation for this method declaration
-			return 0;
+			return Math.round(kilometersPerHour / KM_PER_MILE);
 		}
 
 		/**
@@ -42,7 +47,8 @@ public class EvaluationService {
 		 */
 		public static String printConversion(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			long mph = toMilesPerHour(kilometersPerHour);
+			return String.format("%f km/h = %d mi/h", kilometersPerHour, mph);
 		}
 	}
 
