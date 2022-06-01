@@ -147,8 +147,7 @@ public class EvaluationService {
 	static class TeenNumberChecker {
 
 		public static boolean hasTeen(int x, int y, int z) {
-			// TODO Write an implementation for this method declaration
-			return false;
+			return (isTeen(x) || isTeen(y) || isTeen(z));
 		}
 
 		// We can initialize isTeen method first
@@ -156,7 +155,7 @@ public class EvaluationService {
 
 		public static boolean isTeen(int number) {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return number >= 13 && number <= 19;
 		}
 	}
 
