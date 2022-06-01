@@ -127,8 +127,10 @@ public class EvaluationService {
 	 * Otherwise, return false;
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
-		BigDecimal x = new BigDecimal(firstNum).setScale(2, RoundingMode.FLOOR);
-		BigDecimal y = new BigDecimal(secondNum).setScale(2, RoundingMode.FLOOR);
+		BigDecimal x = new BigDecimal(firstNum).setScale(3, RoundingMode.DOWN);
+		System.out.println(x);
+		BigDecimal y = new BigDecimal(secondNum).setScale(3, RoundingMode.UP);
+		System.out.println(y);
 		return x.equals(y);
 	}
 
