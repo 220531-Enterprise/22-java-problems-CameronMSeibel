@@ -8,7 +8,7 @@ public class Tester {
 		String message = EvaluationService.SpeedConverter.printConversion(1.5);
 		System.out.println(message);
 		
-		boolean thisBytes = eval.areEqualByThreeDecimalPlaces(-3.1756, -3.175);
+		int thisBytes = eval.sumFirstAndLastDigit(242);
 		System.out.println(thisBytes);
 		
 	}

@@ -261,8 +261,12 @@ public class EvaluationService {
 	 * invalid value.
 	 */
 	public int sumFirstAndLastDigit(int num) {
+		if(num < 0) {
+			return -1;
+		}
+		String number = "" + num;
 		// TODO Write an implementation for this method declaration
-		return 0;
+		return Character.getNumericValue(number.charAt(0)) + Character.getNumericValue(number.charAt(number.length() - 1));
 	}
 
 	/**
