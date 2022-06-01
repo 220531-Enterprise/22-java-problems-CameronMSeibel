@@ -74,7 +74,12 @@ public class EvaluationService {
 	 */
 	public String printMegaBytesAndKiloBytes(int XX) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if(XX < 0) {
+			return "Invalid Value";
+		}
+		int megabytes = XX / 1024;
+		int kilobytes = XX % 1024;
+		return String.format("%d KB = %d MB and %d KB", XX, megabytes, kilobytes);
 	}
 
 	/**
