@@ -1,5 +1,8 @@
 package com.revature.eval.java.core;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +51,8 @@ public class EvaluationService {
 		public static String printConversion(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
 			long mph = toMilesPerHour(kilometersPerHour);
-			return String.format("%f km/h = %d mi/h", kilometersPerHour, mph);
+			BigDecimal kph = new BigDecimal(kilometersPerHour).stripTrailingZeros();
+			return String.format("" + kph + " km/h = %d mi/h", mph);
 		}
 	}
 
@@ -123,8 +127,9 @@ public class EvaluationService {
 	 * Otherwise, return false;
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		BigDecimal x = new BigDecimal(firstNum).setScale(2, RoundingMode.FLOOR);
+		BigDecimal y = new BigDecimal(secondNum).setScale(2, RoundingMode.FLOOR);
+		return x.equals(y);
 	}
 
 	/**
