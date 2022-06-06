@@ -15,7 +15,7 @@ public class Tester {
 		
 		System.out.println(eval.cleanPhoneNumber("+1 (613)-995-0253"));
 		
-		System.out.println(eval.calculatePrimeFactorsOf(2L));
+		System.out.println(eval.calculateNthPrime(1));
 		
 	}
 

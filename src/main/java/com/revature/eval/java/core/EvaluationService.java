@@ -553,8 +553,23 @@ public class EvaluationService {
 	 * numbers, pretend they don't exist and implement them yourself.
 	 */
 	public int calculateNthPrime(int k) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		if(k <= 0) {
+			throw new IllegalArgumentException();
+		}
+		int i = 1;
+		int prime = 2;
+		while(i < k) {
+			int j = prime + 1;
+			while(true) {
+				if(isPrime(j)) {
+					prime = j;
+					i++;
+					break;
+				}
+				j++;
+			}
+		}
+		return prime;
 	}
 
 	/**
@@ -570,7 +585,7 @@ public class EvaluationService {
 	 * insensitive. Input will not contain non-ASCII symbols.
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
+		char[] chars = string.toLowerCase().toCharArray();
 		return false;
 	}
 
