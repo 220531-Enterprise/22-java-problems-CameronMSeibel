@@ -502,7 +502,16 @@ public class EvaluationService {
 	 * a number is an Armstrong number.
 	 */
 	public boolean isArmstrongNumber(int input) {
-		return false;
+		int len = 0;
+		for(int i = 0; Math.pow(10, i) < input; i++) {
+			len++;
+		}
+		int number = 0;
+		for(int i = 0; Math.pow(10, i) < input; i++) {
+			number += Math.pow((int)(input / Math.pow(10, i)) % 10, len);
+		}
+		System.out.println(number);
+		return number == input;
 	}
 
 	/**
