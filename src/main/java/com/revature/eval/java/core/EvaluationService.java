@@ -384,8 +384,34 @@ public class EvaluationService {
 	 * 3 + 2*1 + 2*3 + 2 + 1 = 3 + 2 + 6 + 3 = 5 + 9 = 14
 	 */
 	public int getScrabbleScore(String string) {
+		int score = 0;
+		char[] chars = string.toUpperCase().toCharArray();
+		char[][] scores = new char[][] {
+			{},
+			{'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'},
+			{'D', 'G'},
+			{'B', 'C', 'M', 'P'},
+			{'F', 'H', 'V', 'W', 'Y'},
+			{'K'},
+			{},
+			{},
+			{'J', 'X'},
+			{},
+			{'Q', 'Z'}
+		};
+		for(char c : chars) {
+			for(int i = 1; i < scores.length; i++) {
+				for(char target : scores[i]) {
+					if(c == target) {
+						System.out.println(c);
+						score += i;
+//						break;
+					}
+				}
+			}
+		}
 		// TODO Write an implementation for this method declaration
-		return 0;
+		return score;
 	}
 
 	/**

@@ -11,6 +11,8 @@ public class Tester {
 		String thisBytes = eval.reverse("racecar");
 		System.out.println(thisBytes);
 		
+		System.out.println(eval.getScrabbleScore("quirky"));
+		
 	}
 
 }
