@@ -636,7 +636,11 @@ public class EvaluationService {
 	 */
 	
 	public int[] threeLuckyNumbers() {
-		return null;
+		return new int[]{
+				(int) Math.floor(Math.random() * 100 + 1),
+				(int) Math.floor(Math.random() * 100 + 1),
+				(int) Math.floor(Math.random() * 100 + 1)
+			};
 	}
 	
 	/*
@@ -649,7 +653,7 @@ public class EvaluationService {
 	 * You must use the Math.random class to generate a random number between x and y.
 	 */
 	
-	public int guessingGame(int x, int y) {
-		return 0;
+	public int guessingGame(int min, int max) {
+		return (int)Math.floor(Math.random() * (max - min) + min);
 	}
 }
