@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -474,8 +475,16 @@ public class EvaluationService {
 	 * free: 1
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		String[] words = string.split("[\\s\\W]+");
+		for(String word : words) {
+			if(result.containsKey(word)) {
+				result.put(word, result.get(word) + 1);
+			}else {
+				result.put(word, 1);
+			}
+		}
+		return result;
 	}
 
 	/**
