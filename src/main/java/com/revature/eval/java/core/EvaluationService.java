@@ -6,6 +6,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EvaluationService {
 
@@ -448,7 +450,19 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		return null;
+		Pattern charsPat = Pattern.compile("[\\s\\.+()-]");
+		Pattern resPat = Pattern.compile("\\d{10}");
+		Matcher numMatcher = charsPat.matcher(string);
+		String result = numMatcher.replaceAll("");
+		if(result.length() > 10) {
+			result = result.substring(1);
+		}
+		Matcher resMatcher = resPat.matcher(result);
+		boolean legal = resMatcher.matches();
+		if(!legal) {
+			throw new IllegalArgumentException();
+		}
+		return result;
 	}
 
 	/**

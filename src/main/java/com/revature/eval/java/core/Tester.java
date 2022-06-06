@@ -13,6 +13,8 @@ public class Tester {
 		
 		System.out.println(eval.getScrabbleScore("quirky"));
 		
+		System.out.println(eval.cleanPhoneNumber("+1 (613)-995-0253"));
+		
 	}
 
 }
