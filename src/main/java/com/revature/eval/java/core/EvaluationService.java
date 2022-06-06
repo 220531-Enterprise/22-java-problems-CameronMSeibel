@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -585,8 +587,16 @@ public class EvaluationService {
 	 * insensitive. Input will not contain non-ASCII symbols.
 	 */
 	public boolean isPangram(String string) {
+		Set<Character> usedChars = new HashSet<Character>();
+		Pattern alphabet = Pattern.compile("[a-z]");
 		char[] chars = string.toLowerCase().toCharArray();
-		return false;
+		for(char c : chars) {
+			Matcher m = alphabet.matcher("" + c);
+			if(m.matches()) {
+				usedChars.add(c);
+			}
+		}
+		return usedChars.size() == 26;
 	}
 
 	/**
