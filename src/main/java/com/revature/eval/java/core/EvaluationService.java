@@ -2,7 +2,6 @@ package com.revature.eval.java.core;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +32,6 @@ public class EvaluationService {
 			if(kilometersPerHour < 0) {
 				return -1;
 			}
-			// TODO Write an implementation for this method declaration
 			return Math.round(kilometersPerHour / KM_PER_MILE);
 		}
 
@@ -53,7 +51,6 @@ public class EvaluationService {
 		 * Value"
 		 */
 		public static String printConversion(double kilometersPerHour) {
-			// TODO Write an implementation for this method declaration
 			long mph = toMilesPerHour(kilometersPerHour);
 			BigDecimal kph = new BigDecimal(kilometersPerHour).stripTrailingZeros();
 			return String.format("" + kph + " km/h = %d mi/h", mph);
@@ -81,7 +78,6 @@ public class EvaluationService {
 	 * Value".
 	 */
 	public String printMegaBytesAndKiloBytes(int XX) {
-		// TODO Write an implementation for this method declaration
 		if(XX < 0) {
 			return "Invalid Value";
 		}
@@ -131,6 +127,7 @@ public class EvaluationService {
 	 * Otherwise, return false;
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
+//		TODO why is it working unexpectedly
 		BigDecimal x = new BigDecimal(firstNum).setScale(3, RoundingMode.DOWN);
 		System.out.println(x);
 		BigDecimal y = new BigDecimal(secondNum).setScale(3, RoundingMode.UP);
@@ -158,7 +155,6 @@ public class EvaluationService {
 		// Then pass the parameter to hasTeen method
 
 		public static boolean isTeen(int number) {
-			// TODO Write an implementation for this method declaration
 			return number >= 13 && number <= 19;
 		}
 	}
@@ -184,7 +180,6 @@ public class EvaluationService {
 		}
 		long years = minutes / 525600;
 		long days = (minutes % 525600) / 1440;
-		// TODO Write an implementation for this method declaration
 		return String.format("%d min = %d y and %d d", minutes, years, days);
 	}
 
@@ -246,7 +241,6 @@ public class EvaluationService {
 				gcd = divisor;
 			}
 		}
-		// TODO Write an implementation for this method declaration
 		return gcd;
 	}
 
@@ -268,7 +262,6 @@ public class EvaluationService {
 			return -1;
 		}
 		String number = "" + num;
-		// TODO Write an implementation for this method declaration
 		return Character.getNumericValue(number.charAt(0)) + Character.getNumericValue(number.charAt(number.length() - 1));
 	}
 
@@ -283,7 +276,6 @@ public class EvaluationService {
 		for(int i = string.length() - 1; i >= 0; i--) {
 			result += string.charAt(i);
 		}
-		// TODO Write an implementation for this method declaration
 		return result;
 	}
 
@@ -300,7 +292,6 @@ public class EvaluationService {
 		for(String word : words) {
 			result += word.charAt(0);
 		}
-		// TODO Write an implementation for this method declaration
 		System.out.println(result.toUpperCase());
 		return result.toUpperCase();
 	}
@@ -361,12 +352,10 @@ public class EvaluationService {
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
 			return (this.sideOne == this.sideTwo) || (this.sideOne == this.sideThree) || (this.sideTwo == this.sideThree);
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
 			return !this.isIsosceles();
 		}
 
@@ -413,7 +402,6 @@ public class EvaluationService {
 				}
 			}
 		}
-		// TODO Write an implementation for this method declaration
 		return score;
 	}
 
@@ -523,8 +511,34 @@ public class EvaluationService {
 	 * Note that 1 is not a prime number.
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		List<Long> result = new ArrayList<Long>();
+		return factorsHelper(l, result);
+	}
+	
+	private List<Long> factorsHelper(long l, List<Long> list){
+		System.out.println(l);
+		if(l == 1L) {
+			return list;
+		}else {
+			for(long i = 2L; i <= l; i++) {
+				if(isPrime(i) && l % i == 0) {
+					list.add(i);
+					l /= i;
+					break;
+				}
+			}
+		}
+		
+		return factorsHelper(l, list);
+	}
+	
+	private boolean isPrime(long number) {
+		for(long i = 2L; i < number; i++) {
+			if(number % i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
