@@ -53,6 +53,9 @@ public class EvaluationService {
 		 * Value"
 		 */
 		public static String printConversion(double kilometersPerHour) {
+			if(kilometersPerHour < 0) {
+				return "Invalid Value";
+			}
 			long mph = toMilesPerHour(kilometersPerHour);
 			BigDecimal kph = new BigDecimal(kilometersPerHour).stripTrailingZeros();
 			return String.format("" + kph + " km/h = %d mi/h", mph);
@@ -611,7 +614,15 @@ public class EvaluationService {
 	 * The sum of these multiples is 78.
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		return 0;
+		Set<Integer> ints = new HashSet<Integer>();
+		for(int num : set) {
+			for(int j = 1; j * num < i; j++) {
+				ints.add(num * j);
+			}
+		}
+		int res = 0;
+		for(int n : ints) res += n;
+		return res;
 	}
 	
 	/**
